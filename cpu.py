@@ -42,9 +42,10 @@ class CPU:
 
 		with open(sys.argv[1]) as file:
 			for instruction in file:
-				cleaned_instruction = instruction.split(" ")[0]
-				if cleaned_instruction != "#":
-					self.ram[address] = int(cleaned_instruction, 2) # keeping it in binary
+				cleaned_instruction = instruction.split("#")
+				cleaned_valued = cleaned_instruction[0].strip()
+				if cleaned_valued != "":
+					self.ram[address] = int(cleaned_valued, 2) # keeping it in binary
 					address += 1
 
 	# ALU to perform arithmatic operations and also CMP operations
